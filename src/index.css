@@ -1,121 +1,133 @@
+/* src/index.css or src/globals.css */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+/* Tailwind CSS imports */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Slippy Chat App - Skribbl.io Inspired Design System */
-
+/* Custom CSS Variables for Black and Red Theme */
 @layer base {
   :root {
-    /* Skribbl.io Blue Background */
-    --background: 230 45% 25%;
-    --foreground: 0 0% 100%;
+    /* Very deep black for the main background */
+    --background: 0 0% 3.9%;
+    /* Off-white for general text */
+    --foreground: 0 0% 98%;
 
-    /* Cards with game-like styling */
-    --card: 0 0% 100%;
-    --card-foreground: 230 45% 15%;
+    /* Slightly lighter black for card backgrounds */
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
 
-    /* Popover styling */
-    --popover: 0 0% 100%;
-    --popover-foreground: 230 45% 15%;
+    /* Dark popover background */
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
 
-    /* Skribbl Green Primary */
-    --primary: 120 60% 50%;
-    --primary-foreground: 0 0% 100%;
-    --primary-glow: 120 60% 70%;
+    /* A vibrant red for primary actions/accents (e.g., hsl(0, 84.2%, 60.2%) is equivalent to Tailwind's red-600) */
+    --primary: 0 84.2% 60.2%;
+    /* White text on primary red */
+    --primary-foreground: 0 0% 98%;
+    /* Lighter red for glow effects */
+    --primary-glow: 0 84.2% 70%;
 
-    /* Skribbl Blue Secondary */
-    --secondary: 210 80% 55%;
-    --secondary-foreground: 0 0% 100%;
+    /* Dark gray for secondary elements/hover states */
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    /* Muted game colors */
-    --muted: 230 20% 90%;
-    --muted-foreground: 230 20% 40%;
+    /* Dark gray for muted elements */
+    --muted: 0 0% 14.9%;
+    /* Lighter gray for muted text */
+    --muted-foreground: 0 0% 63.9%;
 
-    /* Accent yellow/orange */
-    --accent: 35 100% 50%;
-    --accent-foreground: 0 0% 100%;
+    /* Red for accents (same as primary) */
+    --accent: 0 84.2% 60.2%;
+    --accent-foreground: 0 0% 98%;
 
-    /* Red for warnings */
-    --destructive: 0 80% 60%;
-    --destructive-foreground: 0 0% 100%;
+    /* Dark red for destructive actions */
+    --destructive: 0 80% 40%;
+    --destructive-foreground: 0 0% 98%;
 
-    /* Clean borders */
-    --border: 230 20% 80%;
-    --input: 0 0% 100%;
-    --ring: 120 60% 50%;
+    /* Dark border color */
+    --border: 0 0% 14.9%;
+    /* Dark input background color */
+    --input: 0 0% 14.9%;
+    /* Red focus ring color */
+    --ring: 0 84.2% 60.2%;
 
-    /* Rounded game style */
+    /* Restored radius to 0.75rem (12px) for original component sizing */
     --radius: 0.75rem;
 
-    /* Chat specific colors */
-    --chat-bubble-own: 120 60% 50%;
-    --chat-bubble-other: 0 0% 100%;
-    --chat-system: 35 100% 50%;
-    --chat-join: 120 60% 50%;
-    --chat-leave: 0 80% 60%;
-    --user-online: 120 60% 50%;
-    --user-away: 35 100% 50%;
+    /* Chat specific colors (adjusted for red/black theme) */
+    --chat-bubble-own: 0 84.2% 60.2%; /* Red */
+    --chat-bubble-other: 0 0% 9%;    /* Darker black */
+    --chat-system: 0 0% 63.9%;       /* Muted gray */
+    --chat-join: 0 84.2% 60.2%;      /* Red */
+    --chat-leave: 0 80% 40%;         /* Dark Red */
+    --user-online: 0 84.2% 60.2%;    /* Red */
+    --user-away: 0 0% 63.9%;         /* Muted gray */
 
-    /* Skribbl-style gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(120 60% 50%), hsl(120 60% 40%));
-    --gradient-secondary: linear-gradient(135deg, hsl(210 80% 55%), hsl(210 80% 45%));
-    --gradient-background: linear-gradient(135deg, hsl(230 45% 25%), hsl(230 50% 30%));
-    --gradient-doodle: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    /* Sidebar specific colors for light theme (retained the previous values which were already dark-ish) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
 
-    /* Game-style shadows */
-    --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.1);
-    --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
-    --shadow-glow: 0 0 20px hsl(120 60% 50% / 0.3);
+
+    /* Custom gradients for the theme, using our defined primary color */
+    --gradient-primary: linear-gradient(to right, hsl(var(--primary)), hsl(var(--primary) / 0.8));
+    --gradient-secondary: linear-gradient(to right, hsl(var(--secondary)), hsl(var(--secondary) / 0.8));
+    /* Dark gradient for background */
+    --gradient-background: linear-gradient(135deg, hsl(0 0% 3.9%), hsl(0 0% 6%));
+    /* Keep the doodle pattern but make it subtle on dark background */
+    --gradient-doodle: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.01'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+
+    /* Custom shadow for a glow effect, using our primary color */
+    --shadow-soft: 0 2px 10px rgba(0, 0, 0, 0.4);
+    --shadow-hover: 0 4px 20px rgba(0, 0, 0, 0.6);
+    --shadow-glow: 0 0 15px 5px hsl(var(--primary) / 0.7), 0 0 25px 8px hsl(var(--primary) / 0.4);
 
     /* Smooth game transitions */
     --transition-smooth: all 0.2s ease;
     --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  /* Dark mode settings, mostly aligned with the default red/black for consistency */
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 6%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 0 84.2% 60.2%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 0 84.2% 60.2%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 80% 40%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 84.2% 60.2%;
+
+    /* Sidebar specific colors for dark theme */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -133,6 +145,77 @@
   }
 
   body {
-    @apply bg-background text-foreground;
+    /* Set 'Press Start 2P' as the default font for the body */
+    @apply bg-background text-foreground font-press-start;
+    /* Further reduced font size to 0.5rem (8px) for optimal pixel font readability */
+    font-size: 0.5rem;
+    line-height: 1.5; /* Adjust line height as needed for pixel fonts */
   }
+
+  /* Define 'font-inter' explicitly for readable text like chat messages */
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Adjust font sizes for headings (which will use font-press-start by default)
+     to maintain proper visual hierarchy with the smaller base size.
+     These values are relative to the new, smaller base font size. */
+  h1 {
+    font-size: 2rem; /* Adjusted from 2.25rem to be smaller */
+  }
+
+  h2 {
+    font-size: 1.25rem; /* Adjusted from 1.5rem to be smaller */
+  }
+  /* You can add more specific adjustments for other text elements as needed */
+}
+
+/* Custom Animations */
+@keyframes bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-5px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-bounce-in {
+  animation: bounce-in 0.8s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Custom shadow for a glow effect, using our primary color */
+.shadow-glow {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Custom shadow for hover effects */
+.shadow-hover:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* Apply the background color defined in variables */
+.bg-gradient-background {
+  background: var(--gradient-background); /* Use the new gradient */
+  /* If you want the doodle pattern on top, use: */
+  /* background: var(--gradient-background), var(--gradient-doodle); */
+  /* background-size: cover, auto; */
 }

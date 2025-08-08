@@ -198,8 +198,10 @@ def slippy_loop():
         recent_pool = [
             m for m in messages[-min(30, len(messages)):]
             if not m.get("isSlippyFake")
+            and m.get("username", "").lower() != "system"
             and not re.search(r"\b(joined|left) the room\b", m.get("content", ""), re.IGNORECASE)
         ]
+
 
         if not recent_pool:
             continue
@@ -222,7 +224,7 @@ def slippy_loop():
         chaos_msg = {
             "username": actor["username"],
             "avatar": actor.get("avatar", ""),
-            "content": f"{line} — Slippy meddled ✨",
+            "content": f"{line}",
             "timestamp": now_iso_utc(),
             "isSlippyFake": True
         }

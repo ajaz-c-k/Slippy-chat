@@ -1,31 +1,32 @@
 # render.yaml
+# This file defines the services for your Slippy Chat application on Render.
+
 services:
   # Backend Web Service (Flask with Socket.IO)
   - type: web
-    name: slippy-chat-backend
-    env: python
-    rootDirectory: backend/
-    buildCommand: pip install -r requirements.txt
-    # IMPORTANT CHANGE HERE: Use the eventlet WSGI server directly
-    # 'app:app' refers to the Flask app instance in app.py
-    startCommand: eventlet.wsgi.server(eventlet.listen(('0.0.0.0', 10000)), app)
-    # Render maps internal port 10000 to external HTTP/S
+    name: slippy-chat-backend # A unique name for your backend service on Render
+    env: python # Specifies that this service uses a Python environment
+    rootDirectory: backend/ # <--- Make sure this line exists and is correct
+    buildCommand: pip install -r requirements.txt # Command to install Python dependencies
+    # IMPORTANT: Ensure this is the startCommand for your backend service
+    # This directly calls eventlet's WSGI server, avoiding geventwebsocket.
+    startCommand: python -c "import eventlet.wsgi; import app; eventlet.wsgi.server(eventlet.listen(('0.0.0.0', 10000)), app.app)"
     envVars:
       - key: FRONTEND_URL
         sync: false
       - key: FLASK_SECRET_KEY
         sync: false
-      - key: REDIS_URL
+      - key: REDIS_URL # Optional: For Socket.IO scaling, if you use Redis
         sync: false
-    autoDeploy: true
-    plan: starter
+    autoDeploy: true # Automatically redeploy this service when you push new commits to your Git branch
+    plan: starter # Choose a plan (e.g., 'free', 'starter', 'pro')
 
   # Frontend Static Site (React/Vite)
   - type: static
-    name: slippy-chat-frontend
-    env: node
+    name: slippy-chat-frontend # A unique name for your frontend service on Render
+    env: node # Specifies that this service uses a Node.js environment
     buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    staticPublishPath: dist # The folder where Vite puts your built frontend files
     envVars:
       - key: VITE_REACT_APP_API_URL
         sync: false

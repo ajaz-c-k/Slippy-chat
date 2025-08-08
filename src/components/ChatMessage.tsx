@@ -326,7 +326,7 @@ export const ChatMessage = ({ message, isOwn }: ChatMessageProps) => {
         {/* Slippy indicator (kept for subtle hint, outside the bubble) */}
         {isSlippy && (
           <div className="text-xxs text-destructive mt-1 opacity-70">
-            🎭
+            -slippy🎭
           </div>
         )}
       </div>

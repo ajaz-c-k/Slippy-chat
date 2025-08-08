@@ -1,3 +1,4 @@
+# render.yaml
 services:
   # Backend Web Service (Flask with Socket.IO)
   - type: web
@@ -5,7 +6,10 @@ services:
     env: python
     rootDirectory: backend/
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:socketio --worker-class geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w 1
+    # IMPORTANT CHANGE HERE: Use the eventlet WSGI server directly
+    # 'app:app' refers to the Flask app instance in app.py
+    startCommand: eventlet.wsgi.server(eventlet.listen(('0.0.0.0', 10000)), app)
+    # Render maps internal port 10000 to external HTTP/S
     envVars:
       - key: FRONTEND_URL
         sync: false
@@ -17,8 +21,9 @@ services:
     plan: starter
 
   # Frontend Static Site (React/Vite)
-  - type: static_site   # ✅ Must be static_site
+  - type: static
     name: slippy-chat-frontend
+    env: node
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     envVars:

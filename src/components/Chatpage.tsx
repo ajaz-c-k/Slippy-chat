@@ -44,7 +44,7 @@ export const ChatPage = ({ currentUser, onLogout }: ChatPageProps) => {
   }, [messages]);
 
   useEffect(() => {
-    const socket = io("http://localhost:5000", {
+    const socket = io("http://192.168.10.57:5000", {
       transports: ["websocket"],
     });
     socketRef.current = socket;

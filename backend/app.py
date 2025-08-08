@@ -194,7 +194,13 @@ def slippy_loop():
         if len(users) < 1 or len(messages) < 2:
             continue
 
-        recent_pool = [m for m in messages[-min(30, len(messages)):] if not m.get("isSlippyFake")]
+        # recent_pool = [m for m in messages[-min(30, len(messages)):] if not m.get("isSlippyFake")]
+        recent_pool = [
+            m for m in messages[-min(30, len(messages)):]
+            if not m.get("isSlippyFake")
+            and not re.search(r"\b(joined|left) the room\b", m.get("content", ""), re.IGNORECASE)
+        ]
+
         if not recent_pool:
             continue
         picked = random.choice(recent_pool)

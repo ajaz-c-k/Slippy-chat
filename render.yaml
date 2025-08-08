@@ -1,12 +1,12 @@
 # render.yaml
-# This file defines the services for your Slippy Chat application on Render.
+# Defines the services for your Slippy Chat application on Render.
 
 services:
   # Backend Web Service (Flask with Socket.IO)
-  - type: web # <--- Ensure this indentation is correct
+  - type: web
     name: slippy-chat-backend
     env: python
-    rootDirectory: backend/ # <--- Make sure this line exists and is correct
+    rootDirectory: backend/
     buildCommand: pip install -r requirements.txt
     startCommand: gunicorn app:socketio --worker-class geventwebsocket.gunicorn.workers.GeventWebSocketWorker -w 1
     envVars:
@@ -14,19 +14,18 @@ services:
         sync: false
       - key: FLASK_SECRET_KEY
         sync: false
-      - key: REDIS_URL # Optional: For Socket.IO scaling, if you use Redis
+      - key: REDIS_URL # Optional
         sync: false
     autoDeploy: true
-    plan: starter # Choose a plan (e.g., 'free', 'starter', 'pro')
+    plan: starter
 
   # Frontend Static Site (React/Vite)
-  - type: static # <--- This is the type that's causing the error. Ensure it's exactly 'static' and correctly indented.
+  - type: static_site   # ✅ Correct type
     name: slippy-chat-frontend
-    env: node
+    rootDirectory: frontend/  # ✅ Ensure this matches your actual folder
     buildCommand: npm install && npm run build
-    staticPublishPath: dist # The folder where Vite puts your built frontend files
+    staticPublishPath: dist
     envVars:
       - key: VITE_REACT_APP_API_URL
         sync: false
     autoDeploy: true
-    # Static sites do not have a 'plan'

@@ -37,7 +37,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import { ChatPage } from "./components/ChatPage";
+import { ChatPage } from "@/components/ChatPage";
 
 const queryClient = new QueryClient();
 

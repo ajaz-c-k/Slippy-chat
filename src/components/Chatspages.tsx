@@ -398,7 +398,7 @@ interface ChatPageProps {
   onLogout: () => void;
 }
 
-export const ChatPage = ({ currentUser, onLogout }: ChatPageProps) => {
+export const Chatspages = ({ currentUser, onLogout }: ChatPageProps) => {
   // State to store all chat messages
   const [messages, setMessages] = useState<Message[]>([]);
   // State to store the list of online users

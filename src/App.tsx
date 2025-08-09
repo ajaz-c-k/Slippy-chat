@@ -37,7 +37,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import { ChatPage } from "/components/ChatPage";
+import { Chatspages } from "./components/Chatspages";
 
 const queryClient = new QueryClient();
 
@@ -59,7 +59,7 @@ const ChatPageWrapper = () => {
   };
 
   return (
-    <ChatPage
+    <Chatspages
       currentUser={currentUser}
       onLogout={() => {
         sessionStorage.clear();

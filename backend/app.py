@@ -782,7 +782,6 @@
 #     socketio.run(app, host="0.0.0.0", port=5000, debug=True) # debug=True is for local development only
 
 
-
 import eventlet
 eventlet.monkey_patch() # Must be called at the very beginning, before other imports that might use standard blocking I/O
 
@@ -1073,9 +1072,12 @@ def on_disconnect():
         print(f"[slippy:urban] System message: {leave_msg['content']}") # Direct print
 
 
+# Start the Slippy bot loop in a separate daemon thread
+# MOVED OUTSIDE if __name__ == "__main__" block so it runs on Render
+threading.Thread(target=slippy_loop, daemon=True).start()
+
+
 if __name__ == "__main__":
-    # Start the Slippy bot loop in a separate daemon thread
-    threading.Thread(target=slippy_loop, daemon=True).start()
     # For local development: run the SocketIO app on 0.0.0.0:5000
     # This line should NOT be run when deployed on Render, as Gunicorn handles it.
     socketio.run(app, host="0.0.0.0", port=5000, debug=True) # debug=True is for local development only

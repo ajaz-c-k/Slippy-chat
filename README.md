@@ -1,3 +1,4 @@
+![WhatsApp Image 2025-08-09 at 03 49 36_cca1d95a](https://github.com/user-attachments/assets/07c8f575-647e-4b89-b730-bd9f0047e27e)
 
 # Slippy Bot 🎯
 

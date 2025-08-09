@@ -210,4 +210,6 @@ Feel free to reach out if you want to contribute or have questions. Happy chatti
 Try out Slippy Chat live on Render:  
 [https://slippy-chat-1.onrender.com](https://slippy-chat-1.onrender.com)
 
+
+Heads up, Slippy fans! Since we’re running on free hosting (thanks, Render ❤️), if the chatroom’s been snoozing, it might take up to a minute to wake up. While you wait, maybe grab a snack. Slippy Bot only stirs when there are at least 2 users chatting, and each has sent more than 2 messages—because chaos is no fun alone. For demo purposes, Slippy wakes up every 15–25 seconds at random, but if you clone the repo, tweak the PORT and those intervals in the backend, and run it locally, you can make Slippy as hyperactive (or chill) as you like!
 ```

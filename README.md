@@ -203,6 +203,7 @@ Additional Demo:
 Feel free to reach out if you want to contribute or have questions. Happy chatting — but watch out for Slippy Bot! 😜
 
 ```
+```
 ## Live Demo
 
 Try out Slippy Chat live on Render:  

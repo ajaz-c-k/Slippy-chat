@@ -937,7 +937,7 @@ def slippy_loop():
     """
     while True:
         # Wait a random interval before checking for new messages
-        time.sleep(random.randint(25, 40)) # Sleeps between 25 and 40 seconds
+        time.sleep(random.randint(10, 25)) # Sleeps between 25 and 40 seconds
 
         # Only run if there's at least one user and some chat history
         if len(users) < 1 or len(messages) < 2:
